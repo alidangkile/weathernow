@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeatherNow — Current Weather</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <h1 class="app-title">WeatherNow</h1>
+      <p class="app-subtitle">Check real-time weather anywhere in the world</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <!-- Search Form -->
+      <form id="search-form" class="search-form" novalidate>
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="city-input" 
+            class="city-input" 
+            placeholder="Enter city name..." 
+            autocomplete="off"
+            aria-label="City name"
+          >
+          <button type="submit" id="search-btn" class="search-btn">
+            Search
+          </button>
+        </div>
+      </form>
+
+      <!-- Status Containers -->
+      <div id="status-container" class="status-container">
+        <!-- Empty State (default) -->
+        <div id="empty-state" class="state-card empty-state">
+          <div class="state-icon" aria-hidden="true">🌤️</div>
+          <h2 class="state-title">No city selected</h2>
+          <p class="state-desc">Enter a city name above to view current weather conditions.</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="state-card loading-state hidden" aria-live="polite">
+          <div class="spinner" aria-hidden="true"></div>
+          <p class="state-desc">Fetching weather data...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="state-card error-state hidden" role="alert">
+          <div class="state-icon" aria-hidden="true">⚠️</div>
+          <h2 id="error-title" class="state-title">Unable to find weather</h2>
+          <p id="error-message" class="state-desc">City not found. Please check your spelling and try again.</p>
+        </div>
+      </div>
+
+      <!-- Weather Card Container -->
+      <div id="weather-container" class="weather-container hidden">
+        <article class="weather-card">
+          <div class="weather-card-header">
+            <div>
+              <h2 id="weather-city" class="weather-city">Tokyo</h2>
+              <p id="weather-country" class="weather-country">Japan</p>
+            </div>
+            <div id="weather-condition-icon" class="condition-badge">☀️</div>
+          </div>
+
+          <div class="weather-main">
+            <div class="weather-temp-wrap">
+              <span id="weather-temp" class="weather-temp">24</span>
+              <span class="temp-unit">°C</span>
+            </div>
+            <p id="weather-condition" class="weather-condition">Sunny</p>
+          </div>
+
+          <div class="weather-details-grid">
+            <div class="detail-item">
+              <span class="detail-label">Feels like</span>
+              <span id="weather-feels-like" class="detail-value">25°C</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Humidity</span>
+              <span id="weather-humidity" class="detail-value">55%</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Wind speed</span>
+              <span id="weather-wind" class="detail-value">12 km/h</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
